@@ -1,7 +1,7 @@
 {
   "name": "guenevere",
   "version": "0.1.0",
-  "homepage": "https://joyceroh.github.io/guenevere",
+  "homepage": "https://guenevere.xyz/guenevere",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
