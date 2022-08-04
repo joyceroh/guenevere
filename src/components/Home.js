@@ -11,6 +11,8 @@ function Home() {
                 this.oldScroll = this.scrollY;
             }
 
+            const factor = (window.scrollY - 4 * windowHeight) / 4;
+
             if (window.scrollY === 0) {
                 document.getElementById("window-1").style.opacity = 1;
             } else if (window.scrollY > 0 && window.scrollY <= windowHeight ) {
@@ -28,17 +30,20 @@ function Home() {
             } else if (window.scrollY >= 4 * windowHeight && window.scrollY <= 6 * windowHeight && !direction) {
                 document.getElementById("window-3").style.position = "fixed";
                 document.getElementById("window-3").style.top = 0;
-                // change curiosity box in here
-                // factor is from 1 to 500
-                console.log(window.scrollY);
-                console.log(windowHeight);
-                const factor = (window.scrollY - 4 * windowHeight) / 5;
-
+                
+                // grow the curiosity box
                 if (factor < document.getElementById("curiosity-word").offsetWidth) {
                     document.getElementById("curiosity-box").style.width = factor + "px";
                 } else {
                     document.getElementById("curiosity-box").style.width = document.getElementById("curiosity-word").offsetWidth + "px";
                 }
+
+                // show curiosity subtext
+                if (window.scrollY >= 5 * windowHeight) {
+
+                    document.getElementById("curiosity-subtext").style.opacity = 1 - ( 6 * windowHeight - window.scrollY) / 1000 ;
+                }
+                
                 
             } else if (window.scrollY >= 6 * windowHeight && window.scrollY <= 7 * windowHeight && !direction) {
                 document.getElementById("window-3").style.position = "absolute";
@@ -46,13 +51,15 @@ function Home() {
             } else if (window.scrollY <= 6 * windowHeight && window.scrollY >= 4 * windowHeight && direction) {
                 document.getElementById("window-3").style.position = "fixed";
                 document.getElementById("window-3").style.top = "0";
-                const factor = (window.scrollY - windowHeight * 4) / 5;
 
+                // shrink the curiosity box
                 if (factor < document.getElementById("curiosity-word").offsetWidth) {
                     document.getElementById("curiosity-box").style.width = factor + "px";
                 } else {
                     document.getElementById("curiosity-box").style.width = document.getElementById("curiosity-word").offsetWidth + "px";
                 }
+
+                
             } else if (window.scrollY <= 4 * windowHeight && window.scrollY >= 3 * windowHeight && direction) {
                 document.getElementById("curiosity-box").style.width = 0;
                 document.getElementById("window-3").style.position = "absolute";
