@@ -13,7 +13,7 @@
 }
 
 .homeContainer {
-    height: 400vh;
+    height: 800vh;
     width: 100%;
     background-color: #FAF9F9;
 }
@@ -48,10 +48,19 @@
 }
 
 #window-3 {
-    top: 300vh;
+    top: 400vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+#window-4 {
+    top: 700vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .window {
@@ -80,4 +89,33 @@
     animation: bounceicon 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#curiosity-box {
+    background-color: #89B0AE;
+    color: transparent;
+    width: 0;
+}
+
+#curiosity-word {
+    padding: 2px;
+    position: absolute;
+    top: 0;
+    color: #FAF9F9;
+    z-index: 1;
+}
+
+#curiosity-box-wrapper {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+#curiosity-subtext {
+    opacity: 0;
+}
+
+#curiosity {
+    display: flex;
+    flex-direction: row;
 }
