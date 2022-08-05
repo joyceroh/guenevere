@@ -24,6 +24,15 @@ function Home() {
             } else if (window.scrollY >= windowHeight && window.scrollY <= 3 * windowHeight && !direction) {
                 document.getElementById("window-2").style.position = "fixed";
                 document.getElementById("window-2").style.top = 0;
+
+                // grow bars in bar graph
+                if (window.scrollY >= windowHeight * 2) {
+                    document.getElementById("bar1").style.height = (window.scrollY - 2 * windowHeight) / 5 + "px";
+                    document.getElementById("bar2").style.height = (window.scrollY - 2 * windowHeight) / 3 + "px";
+                    document.getElementById("bar3").style.height = (window.scrollY - 2 * windowHeight) / 3.6 + "px";
+                    document.getElementById("bar4").style.height = (window.scrollY - 2 * windowHeight) / 4.3 + "px";
+                }
+                
             } else if (window.scrollY >= 3 * windowHeight && window.scrollY <= 4 * windowHeight && !direction) {
                 document.getElementById("window-2").style.top = "300vh";
                 document.getElementById("window-2").style.position = "absolute";
@@ -39,9 +48,8 @@ function Home() {
                 }
 
                 // show curiosity subtext
-                if (window.scrollY >= 5 * windowHeight) {
-
-                    document.getElementById("curiosity-subtext").style.opacity = 1 - ( 6 * windowHeight - window.scrollY) / 1000 ;
+                if (window.scrollY >= 5.5 * windowHeight) {
+                    document.getElementById("curiosity-subtext").style.opacity = 1 - ( 6 * windowHeight -  window.scrollY) / 400 + .25;
                 }
                 
                 
@@ -59,6 +67,11 @@ function Home() {
                     document.getElementById("curiosity-box").style.width = document.getElementById("curiosity-word").offsetWidth + "px";
                 }
 
+                // hide curiosity subtext
+                if (window.scrollY <= 6 * windowHeight) {
+                    document.getElementById("curiosity-subtext").style.opacity = 1 - ( 6 * windowHeight -  window.scrollY) / 400 + .25 ;
+                }
+
                 
             } else if (window.scrollY <= 4 * windowHeight && window.scrollY >= 3 * windowHeight && direction) {
                 document.getElementById("curiosity-box").style.width = 0;
@@ -67,6 +80,18 @@ function Home() {
             } else if (window.scrollY <= 3 * windowHeight && window.scrollY >= windowHeight && direction) {
                 document.getElementById("window-2").style.position = "fixed";
                 document.getElementById("window-2").style.top = 0;
+
+                // shrink bars in bar graph
+                if (window.scrollY >= windowHeight * 2) {
+                    document.getElementById("bar1").style.height = (window.scrollY - 2 * windowHeight) / 5 + "px";
+                    document.getElementById("bar2").style.height = (window.scrollY - 2 * windowHeight) / 3 + "px";
+                    document.getElementById("bar3").style.height = (window.scrollY - 2 * windowHeight) / 3.6 + "px";
+                    document.getElementById("bar4").style.height = (window.scrollY - 2 * windowHeight) / 4.3 + "px";
+                } else {
+                    for (let i = 0; i < 4; i++) {
+                        document.getElementsByClassName("bar-graph-bars")[i].style.height = 0;
+                    }
+                }
             } 
         };
 
@@ -92,8 +117,26 @@ function Home() {
             </div>
             
             <div className="window" id="window-2">
-                I'm currently a student at Washington University in St. Louis
-                pursuing a Joint Degree in Business and Computer Science with a minor in Korean Language & Culture.
+                <div id="text2" className="text-block">
+                    I'm currently a student at Washington University in St. Louis
+                    pursuing a Joint Degree in Business and Computer Science.
+                </div>
+
+
+                <div id="graph-img">
+                    <div className="axes" id="x-axis"></div>
+                    <div className="axes" id="y-axis"></div>
+
+                    <div id="bars">
+                        <div className='bar-graph-bars' id='bar1'></div>
+                        <div className='bar-graph-bars' id='bar2'></div>
+                        <div className='bar-graph-bars' id='bar3'></div>
+                        <div className='bar-graph-bars' id='bar4'></div>
+                    </div>
+                    
+                </div>
+                
+                
             </div>
 
             <div className="window" id="window-3">
@@ -104,12 +147,12 @@ function Home() {
                     <div id='curiosity-word'>curiosity</div>
                 </div>
                 </div>
-                <div id="curiosity-subtext">a curiosity to learn more about the people, stories, and products around me. </div>
+                <div id="curiosity-subtext" className="text-block">a curiosity to learn more about the people, stories, and products around me. </div>
                 
             </div>
 
             <div className="window" id="window-4">
-                Thanks for visiting my page! Feel free to look around or contact me via LinkedIn or email. 
+                <div id="text-4" className="text-block">Thanks for visiting my page! Feel free to look around or contact me via <a className="linkedin-link" href="https://www.linkedin.com/in/gueneverechang/">LinkedIn</a>. </div>
             </div>
         </div>
     );
